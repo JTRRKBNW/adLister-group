@@ -55,6 +55,11 @@ public class MySQLAdsDao implements Ads {
         }
     }
 
+    @Override
+    public List<Ad> getAdsByUser(Long userId) {
+        return null;
+    }
+
     private Ad extractAd(ResultSet rs) throws SQLException {
         return new Ad(
             rs.getLong("id"),
@@ -71,4 +76,26 @@ public class MySQLAdsDao implements Ads {
         }
         return ads;
     }
+
+    @Override
+    public List<Ad> getAdsByUser(long id) {
+        List<Ad> adsByUser = new ArrayList<>();
+        try {
+            PreparedStatement stmt = connection.prepareStatement("SELECT * FROM ads WHERE user_id = ?");
+            stmt.setLong(1, id);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                adsByUser.add(new Ad(
+                        rs.getLong("id"),
+                        rs.getLong("user_id"),
+                        rs.getString("title"),
+                        rs.getString("description")
+                ));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException("Error retrieving ads by a user from the database", e);
+        }
+        return adsByUser;
+    }
+
 }
