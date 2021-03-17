@@ -54,11 +54,27 @@ public class MySQLAdsDao implements Ads {
             throw new RuntimeException("Error creating a new ad.", e);
         }
     }
-
     @Override
-    public List<Ad> getAdsByUser(Long userId) {
+    public List<Ad> search(String term){
+        String sql = "SELECT * FROM ads WHERE title  LIKE ? ";
+        String searchTermWithWildcards = "%" + term + "%";
+
+        try {
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            stmt.setString(1, searchTermWithWildcards);
+
+            ResultSet rs = stmt.executeQuery();
+            return generateAds(rs);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
         return null;
     }
+
+//    @Override
+//    public List<Ad> getAdsByUser(Long userId) {
+//      return null;
+    //}
 
     private Ad extractAd(ResultSet rs) throws SQLException {
         return new Ad(
