@@ -19,12 +19,21 @@
                 <li><a href="/register">Register</a></li>
             </c:if>
             <c:if test="${sessionScope.user != null}">
-                <li><a href="/logout">Logout</a></li>
+                <li><a href="/ads/create">Create A New Ad</a></li>
             </c:if>
             <c:if test="${sessionScope.user != null}">
                 <li><a href="/features">Features</a></li>
             </c:if>
+            <c:if test="${sessionScope.user != null}">
+                <li><a prompt="delete">Delete Ads</a></li>
+            </c:if>
+            <c:if test="${sessionScope.user != null}">
+                <li><a href="/logout">Logout</a></li>
+            </c:if>
         </ul>
+
+
     </div><!-- /.navbar-collapse -->
+    <div>
     </div><!-- /.container-fluid -->
 </nav>

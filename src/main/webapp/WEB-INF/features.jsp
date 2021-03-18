@@ -17,8 +17,8 @@
 <div class="container">
     <h1>Here is more information about that ad</h1>
     <div class="col-md-6">
-        <h2>${displayAd.id} - ${displayAd.title} </h2>
-        <p>${displayAd.description}</p>
+        <h2>${ad.id} - ${ad.title} </h2>
+        <p>${ad.description}</p>
     </div>
 </div>
 </body>
