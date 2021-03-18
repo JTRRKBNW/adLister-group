@@ -12,10 +12,7 @@ public interface Ads {
     // gets an ad by user id
      Ad individualAd(Long id);
 
-
-
-
-    List<Ad> getAdsByUser(long id);
+     List<Ad> getAdsByUser(long id);
 
     List<Ad> search(String term);
 
