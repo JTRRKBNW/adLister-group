@@ -33,7 +33,7 @@
 <%--                <input type="submit" class="btn btn-block btn-primary">--%>
 <%--            </form>--%>
         </div>
-        <a href="#" class="card-link">Card link</a>
+        <a href="#" class="card-link">Delete</a>
         <a href="#" class="card-link">Another link</a>
     </div>
 </c:forEach>
