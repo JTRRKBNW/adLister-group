@@ -3,9 +3,6 @@ package com.codeup.adlister.dao;
 import com.codeup.adlister.models.Ad;
 import com.mysql.cj.jdbc.Driver;
 
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,9 +14,9 @@ public class MySQLAdsDao implements Ads {
         try {
             DriverManager.registerDriver(new Driver());
             connection = DriverManager.getConnection(
-                config.getUrl(),
-                config.getUser(),
-                config.getPassword()
+                    config.getUrl(),
+                    config.getUser(),
+                    config.getPassword()
             );
         } catch (SQLException e) {
             throw new RuntimeException("Error connecting to the database!", e);
@@ -56,9 +53,8 @@ public class MySQLAdsDao implements Ads {
     }
 
 
-
     @Override
-    public List<Ad> search(String term){
+    public List<Ad> search(String term) {
         String sql = "SELECT * FROM ads WHERE title  LIKE ? ";
         String searchTermWithWildcards = "%" + term + "%";
 
@@ -86,10 +82,10 @@ public class MySQLAdsDao implements Ads {
 
     private Ad extractAd(ResultSet rs) throws SQLException {
         return new Ad(
-            rs.getLong("id"),
-            rs.getLong("user_id"),
-            rs.getString("title"),
-            rs.getString("description")
+                rs.getLong("id"),
+                rs.getLong("user_id"),
+                rs.getString("title"),
+                rs.getString("description")
         );
     }
 
@@ -121,9 +117,10 @@ public class MySQLAdsDao implements Ads {
         }
         return adsByUser;
     }
+
     private List<Ad> generateAds(ResultSet rs) throws SQLException {
         List<Ad> ads = new ArrayList<>();
-        while (rs.next()){
+        while (rs.next()) {
             ads.add(new Ad(
                     rs.getLong("id"),
                     rs.getLong("user_id"),
@@ -133,5 +130,24 @@ public class MySQLAdsDao implements Ads {
         }
         return ads;
     }
+
+    public Ad individualAd(Long id) {
+        String query = "SELECT * FROM Ads WHERE id = ?";
+        try {
+            PreparedStatement stmt = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+            stmt.setLong(1, id);
+            ResultSet rs = stmt.getGeneratedKeys();
+            rs.next();
+            return extractAd(rs);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+
+        return null;
+    }
+
+
+
 
 }

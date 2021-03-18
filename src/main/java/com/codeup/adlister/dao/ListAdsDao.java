@@ -27,6 +27,13 @@ public class ListAdsDao implements Ads {
         return ad.getId();
     }
 
+    @Override
+    public Ad individualAd(Long id) {
+        return null;
+
+//        logic to grab data from database goes here
+    }
+
 
     @Override
 public List<Ad> deleteAd(long id){return null;};
