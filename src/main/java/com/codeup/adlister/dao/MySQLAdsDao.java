@@ -54,6 +54,24 @@ public class MySQLAdsDao implements Ads {
             throw new RuntimeException("Error creating a new ad.", e);
         }
     }
+    @Override
+    public List<Ad> deleteAd(long id) {
+
+        String sql = "DELETE FROM ads WHERE id =?";
+        String deletead = "%" + id + "%";
+        try {
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setString(1, deletead);
+
+            int rowsDeleted = statement.executeUpdate();
+            if (rowsDeleted > 0) {
+                System.out.println("A user was deleted successfully!");
+            }
+        }catch (SQLException throwables){
+            throwables.printStackTrace();
+        }
+        return null;
+    }
 
     @Override
     public Ad individualAd(Long id) {
@@ -89,10 +107,7 @@ public class MySQLAdsDao implements Ads {
         return null;
     }
 
-    @Override
-    public List<Ad> deleteAd(long id) {
-        return null;
-    }
+
 
     private Ad extractAd(ResultSet rs) throws SQLException {
         return new Ad(
