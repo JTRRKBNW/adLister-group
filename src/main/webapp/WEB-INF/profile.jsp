@@ -16,19 +16,21 @@
 
 
 <c:forEach var="userad" items="${userAds}">
-<div class="card" style="width: 18rem;">
-    <div class="card-body">
-        <div class="col-md-6 row">
-            <h6 class="card-subtitle mb-2 text-muted"><c:out value="${userad.title}"/></h6>
-            <p class="card-text"><c:out value="${userad.description}"/></p>
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <div class="col-md-6 row">
+                <h6 class="card-subtitle mb-2 text-muted"><c:out value="${userad.title}"/></h6>
+                <hr>
+                <p class="card-text"><c:out value="${userad.description}"/></p>
+                <hr>
+            </div>
+            <br>
         </div>
-        <a href="#" class="card-link">Card link</a>
-        <a href="#" class="card-link">Another link</a>
-        <br>
-        </c:forEach>
+        <div class="">
+            <a href="#" type="submit" class="btn btn-primary" id="adId">Delete</a>
+        </div>
     </div>
-</div>
-
+</c:forEach>
 
 </body>
 </html>
