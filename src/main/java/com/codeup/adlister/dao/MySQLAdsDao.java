@@ -55,6 +55,35 @@ public class MySQLAdsDao implements Ads {
         }
     }
 
+
+
+    @Override
+    public List<Ad> search(String term){
+        String sql = "SELECT * FROM ads WHERE title  LIKE ? ";
+        String searchTermWithWildcards = "%" + term + "%";
+
+        try {
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            stmt.setString(1, searchTermWithWildcards);
+
+            ResultSet rs = stmt.executeQuery();
+            return generateAds(rs);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
+    public List<Ad> deleteAd(long id) {
+        return null;
+    }
+
+//    @Override
+//    public List<Ad> getAdsByUser(Long userId) {
+//      return null;
+    //}
+
     private Ad extractAd(ResultSet rs) throws SQLException {
         return new Ad(
             rs.getLong("id"),
@@ -71,4 +100,38 @@ public class MySQLAdsDao implements Ads {
         }
         return ads;
     }
+
+    @Override
+    public List<Ad> getAdsByUser(long id) {
+        List<Ad> adsByUser = new ArrayList<>();
+        try {
+            PreparedStatement stmt = connection.prepareStatement("SELECT * FROM ads WHERE user_id = ?");
+            stmt.setLong(1, id);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                adsByUser.add(new Ad(
+                        rs.getLong("id"),
+                        rs.getLong("user_id"),
+                        rs.getString("title"),
+                        rs.getString("description")
+                ));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException("Error retrieving ads by a user from the database", e);
+        }
+        return adsByUser;
+    }
+    private List<Ad> generateAds(ResultSet rs) throws SQLException {
+        List<Ad> ads = new ArrayList<>();
+        while (rs.next()){
+            ads.add(new Ad(
+                    rs.getLong("id"),
+                    rs.getLong("user_id"),
+                    rs.getString("title"),
+                    rs.getString("description")
+            ));
+        }
+        return ads;
+    }
+
 }
