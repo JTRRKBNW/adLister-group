@@ -54,6 +54,9 @@ public class MySQLAdsDao implements Ads {
             throw new RuntimeException("Error creating a new ad.", e);
         }
     }
+
+
+
     @Override
     public List<Ad> search(String term){
         String sql = "SELECT * FROM ads WHERE title  LIKE ? ";
@@ -68,6 +71,11 @@ public class MySQLAdsDao implements Ads {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
+        return null;
+    }
+
+    @Override
+    public List<Ad> deleteAd(long id) {
         return null;
     }
 
@@ -112,6 +120,18 @@ public class MySQLAdsDao implements Ads {
             throw new RuntimeException("Error retrieving ads by a user from the database", e);
         }
         return adsByUser;
+    }
+    private List<Ad> generateAds(ResultSet rs) throws SQLException {
+        List<Ad> ads = new ArrayList<>();
+        while (rs.next()){
+            ads.add(new Ad(
+                    rs.getLong("id"),
+                    rs.getLong("user_id"),
+                    rs.getString("title"),
+                    rs.getString("description")
+            ));
+        }
+        return ads;
     }
 
 }
