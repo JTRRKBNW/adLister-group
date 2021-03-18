@@ -2,6 +2,7 @@ package com.codeup.adlister.controllers;
 
 import com.codeup.adlister.dao.DaoFactory;
 import com.codeup.adlister.models.Ad;
+import com.codeup.adlister.models.User;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,24 +19,24 @@ import static java.lang.Integer.parseInt;
 public class AdFeaturesServlet  extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        int id = parseInt(req.getParameter("id"));
-        Ad displayAd = null;
-
-        List<Ad> adList = DaoFactory.getAdsDao().all();
-        for(Ad ad: adList){
-            if(ad.getId() == id){
-                displayAd = ad;
-
-            }
-        }
-        if (displayAd == null){
-            resp.getWriter().println("<h1>Try again, Something went wrong</h1>");
-        }
-        else{
-            req.setAttribute("displayAd", displayAd);
-            req.getRequestDispatcher("/WEB-INF/ads/features.jsp").forward(req, resp);
-        }
-
+        String adId = req.getParameter("user_id");
+        long Id = Long.parseLong(adId);
+        req.setAttribute("ad", DaoFactory.getAdsDao().individualAd(Id));
+        req.getRequestDispatcher("/WEB-INF/profile.jsp").forward(req, resp);
 
     }
 }
+
+//        if (req.getSession().getAttribute("user") == null) {
+//        resp.sendRedirect("/login");
+//        return;
+//        }
+//
+//        if (req.getParameter("user_id") != null) {
+//        String username = req.getParameter("user_id");
+//        User user = DaoFactory.getUsersDao().findByUsername(username);
+//        req.setAttribute("userAds", DaoFactory.getAdsDao().getAdsByUser(user.getId()));
+//        req.getRequestDispatcher("/WEB-INF/profile.jsp").forward(req, resp);
+//        } else {
+//        User user = (User) req.getSession().getAttribute("user");
+//        req.setAttribute("userAds", DaoFactory.getAdsDao().getAdsByUser(user.getId()));
