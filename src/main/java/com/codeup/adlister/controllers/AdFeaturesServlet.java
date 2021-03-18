@@ -18,6 +18,7 @@ import static java.lang.Integer.parseInt;
 public class AdFeaturesServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
         int id = parseInt(req.getParameter("id"));
         Ad displayAd = null;
 
@@ -39,3 +40,11 @@ public class AdFeaturesServlet extends HttpServlet {
 
     }
 }
+
+        String adId = req.getParameter("user_id");
+        long Id = Long.parseLong(adId);
+        req.setAttribute("ad", DaoFactory.getAdsDao().individualAd(Id));
+        req.getRequestDispatcher("/WEB-INF/profile.jsp").forward(req, resp);
+    }
+}
+

@@ -55,6 +55,21 @@ public class MySQLAdsDao implements Ads {
         }
     }
 
+    @Override
+    public Ad individualAd(Long id) {
+        String singleAd = "SELECT * FROM ads WHERE user_id = ? ";
+        String searchTermWithWildcards = "%" + id + "%";
+        try {
+            PreparedStatement stmt = connection.prepareStatement(singleAd);
+            stmt.setString(1, searchTermWithWildcards);
+
+            ResultSet rs = stmt.executeQuery();
+            return extractAd(rs);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return null;
+    }
 
 
     @Override
@@ -92,11 +107,6 @@ public class MySQLAdsDao implements Ads {
         }
         return null;
     }
-
-//    @Override
-//    public List<Ad> getAdsByUser(Long userId) {
-//      return null;
-    //}
 
     private Ad extractAd(ResultSet rs) throws SQLException {
         return new Ad(

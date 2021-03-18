@@ -14,11 +14,8 @@
 </head>
 <body>
 <jsp:include page="/WEB-INF/partials/navbar.jsp" />
-
 <div class="container">
     <h1>Here is more information about that ad</h1>
-
-
     <div class="col-md-6">
         <h2>${displayAd.id} - ${displayAd.title} </h2>
         <p>${displayAd.description}</p>
@@ -26,5 +23,3 @@
 </div>
 </body>
 </html>
-
-

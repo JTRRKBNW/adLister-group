@@ -25,7 +25,6 @@
                 <li><a href="/features">Features</a></li>
             </c:if>
         </ul>
-
     </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
 </nav>

@@ -10,6 +10,9 @@ public interface Ads {
     // insert a new ad and return the new ad's id
     Long insert(Ad ad);
     // gets an ad by user id
+     Ad individualAd(Long id);
+
+
 
 
 
