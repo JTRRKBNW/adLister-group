@@ -8,16 +8,26 @@
 </head>
 <body>
 <jsp:include page="/WEB-INF/partials/navbar.jsp"/>
+<jsp:include page="/WEB-INF/partials/bootstrap.jsp"/>
 <div>
-<%--    <h1>Welcome, ${sessionScope.user.username}</h1>--%>
+    <%--    <h1>Welcome, ${sessionScope.user.username}</h1>--%>
     <h1>Here are all of your ads!</h1>
 </div>
+
+
 <c:forEach var="userad" items="${userAds}">
-    <div class="col-md-6">
-        <h2><c:out value="${userad.title}"/></h2>
-        <p><c:out value="${userad.description}"/></p>
+<div class="card" style="width: 18rem;">
+    <div class="card-body">
+        <div class="col-md-6 row">
+            <h6 class="card-subtitle mb-2 text-muted"><c:out value="${userad.title}"/></h6>
+            <p class="card-text"><c:out value="${userad.description}"/></p>
+        </div>
+        <a href="#" class="card-link">Card link</a>
+        <a href="#" class="card-link">Another link</a>
+        <br>
+        </c:forEach>
     </div>
-</c:forEach>
+</div>
 
 
 </body>
