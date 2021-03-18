@@ -15,6 +15,7 @@ public interface Ads {
 
 
 
+
     List<Ad> getAdsByUser(long id);
 
     List<Ad> search(String term);

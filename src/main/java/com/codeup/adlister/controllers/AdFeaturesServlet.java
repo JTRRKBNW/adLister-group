@@ -13,13 +13,38 @@ import java.util.List;
 
 import static java.lang.Integer.parseInt;
 
+
 @WebServlet(name = "controllers.AdFeaturesServlet", urlPatterns = "/features")
 public class AdFeaturesServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        int id = parseInt(req.getParameter("id"));
+        Ad displayAd = null;
+
+        List<Ad> adList = DaoFactory.getAdsDao().all();
+        for(Ad ad: adList){
+            if(ad.getId() == id){
+                displayAd = ad;
+
+            }
+        }
+        if (displayAd == null){
+            resp.getWriter().println("<h1>Try again, Something went wrong</h1>");
+        }
+        else{
+            req.setAttribute("displayAd", displayAd);
+            req.getRequestDispatcher("/WEB-INF/ads/features.jsp").forward(req, resp);
+        }
+
+
+    }
+}
+
         String adId = req.getParameter("user_id");
         long Id = Long.parseLong(adId);
         req.setAttribute("ad", DaoFactory.getAdsDao().individualAd(Id));
         req.getRequestDispatcher("/WEB-INF/profile.jsp").forward(req, resp);
     }
 }
+
