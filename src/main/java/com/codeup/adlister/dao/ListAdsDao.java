@@ -34,7 +34,6 @@ public class ListAdsDao implements Ads {
 //        logic to grab data from database goes here
     }
 
-
     @Override
 public List<Ad> deleteAd(long id){return null;};
 
