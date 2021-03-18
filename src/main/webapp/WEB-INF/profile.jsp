@@ -16,19 +16,27 @@
 
 
 <c:forEach var="userad" items="${userAds}">
-<div class="card" style="width: 18rem;">
-    <div class="card-body">
-        <div class="col-md-6 row">
-            <h6 class="card-subtitle mb-2 text-muted"><c:out value="${userad.title}"/></h6>
-            <p class="card-text"><c:out value="${userad.description}"/></p>
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <div class="col-md-6 row">
+                <h6 class="card-subtitle mb-2 text-muted"><c:out value="${userad.title}"/></h6>
+                <p class="card-text"><c:out value="${userad.id}"/></p>
+                <p class="card-text"><c:out value="${userad.description}"/></p>
+            </div>
+            <br>
+<%--            <form action="/profile" method="post">--%>
+<%--                <div class="form-group">--%>
+<%--                    <label for="adId">ad_ID</label>--%>
+<%--                    <input id="adId" name="adId" class="form-control" type="text">--%>
+<%--                </div>--%>
+
+<%--                <input type="submit" class="btn btn-block btn-primary">--%>
+<%--            </form>--%>
         </div>
         <a href="#" class="card-link">Card link</a>
         <a href="#" class="card-link">Another link</a>
-        <br>
-        </c:forEach>
     </div>
-</div>
-
+</c:forEach>
 
 </body>
 </html>
