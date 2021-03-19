@@ -16,7 +16,7 @@ public interface Ads {
 
     void updateProfile(User user);
 
-     List<Ad> updateAd(long id,String title,String description);
+    List<Ad> updateAd(long id,String title,String description);
 
     List<Ad> getAdsByUser(long id);
 
