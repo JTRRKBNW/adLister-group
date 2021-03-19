@@ -25,7 +25,7 @@
                 <li><a href="/features">Features</a></li>
             </c:if>
             <c:if test="${sessionScope.user != null}">
-                <li><a prompt="delete">Delete Ads</a></li>
+                <li><a href="/profile">Profile</a></li>
             </c:if>
             <c:if test="${sessionScope.user != null}">
                 <li><a href="/logout">Logout</a></li>

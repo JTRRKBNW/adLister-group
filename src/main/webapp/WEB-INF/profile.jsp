@@ -32,7 +32,7 @@
                                 <div class="form-group">
                                     <br>
                                     <label for="adId">delete ad</label>
-                                    <input id="adId" name="adId" class="form-control" type="text" value="${userad.id}">
+                                    <input id="adId" name="adId" class="form-control" hidden type="text"  value="${userad.id}">
                                 </div>
 
                                 <input type="submit" class="btn btn-block btn-primary">
