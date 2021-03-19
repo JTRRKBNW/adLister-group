@@ -56,7 +56,7 @@
 <%--            <label for ="submit">Delete--%>
 <%--            </label>--%>
 <%--            <input type="submit" id ="submit"class="btn btn-block btn-primary">--%>
-        <a href="#" class="card-link">Another link</a>
+
     </div>
 
 </c:forEach>
