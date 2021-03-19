@@ -1,6 +1,7 @@
 package com.codeup.adlister.dao;
 
 import com.codeup.adlister.models.Ad;
+import com.codeup.adlister.models.User;
 import com.mysql.cj.jdbc.Driver;
 
 import java.io.FileInputStream;
@@ -109,6 +110,10 @@ public class MySQLAdsDao implements Ads {
         return null;
     }
 
+    @Override
+    public void updateProfile(User user) {
+
+    }
 
     @Override
     public List<Ad> search(String term){

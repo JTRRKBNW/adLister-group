@@ -1,6 +1,7 @@
 package com.codeup.adlister.dao;
 
 import com.codeup.adlister.models.Ad;
+import com.codeup.adlister.models.User;
 
 import java.util.List;
 
@@ -11,7 +12,9 @@ public interface Ads {
     Long insert(Ad ad);
     // gets an ad by user id
      Ad individualAd(Long id);
+     // update user profile
 
+    void updateProfile(User user);
 
      List<Ad> updateAd(long id,String title,String description);
 
