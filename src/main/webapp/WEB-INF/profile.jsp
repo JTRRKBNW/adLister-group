@@ -20,8 +20,11 @@
     <div class="card" style="width: 18rem;">
         <div class="card-body">
             <div class="col-md-6 row">
+                <div>
                 <h6 class="card-subtitle mb-2 text-muted"><c:out value="${userad.title}"/></h6>
+
                 <p class="card-text"><c:out value="${userad.description}"/></p>
+                    </div>
                 <form action="/updateAdServlet" method="post">
                     <div class="form-group">
                         <br>
@@ -34,17 +37,19 @@
                     </div>
 
                     <input type="submit" class="btn btn-block btn-primary">
+
                 </form>
             </div>
             <br>
               <form action="/profile" method="post">
                                 <div class="form-group">
                                     <br>
-                                    <label for="adId">delete ad</label>
+
                                     <input id="adId" name="adId" class="form-control" hidden type="text"  value="${userad.id}">
                                 </div>
 
-                                <input type="submit" class="btn btn-block btn-primary">
+                                <input id ="delete" type="submit" value="Delete" class="btn btn-block btn-danger">
+
                             </form>
         </div>
 <%--        <button type="submit" class="btn btn-danger" id="${}">--%>
