@@ -35,6 +35,7 @@ public class ViewProfileServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         User userDeleteAd = (User) request.getSession().getAttribute("id");
         long adId= Long.parseLong(request.getParameter("adId"));
+
         DaoFactory.getAdsDao().deleteAd(adId);
         System.out.println(adId);
         response.sendRedirect("/ads");

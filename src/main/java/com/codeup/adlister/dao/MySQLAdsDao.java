@@ -72,7 +72,27 @@ public class MySQLAdsDao implements Ads {
         }
         return null;
     }
+    @Override
+    public List<Ad> updateAd(long id,String title,String description) {
 
+        String sql = "UPDATE  ads SET title=?  ,description=? WHERE id LIKE ?";
+        String adId = "%" + id + "%";
+
+        try {
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setString(3, adId);
+            statement.setString(1,title);
+            statement.setString(2,description);
+
+            int rowsUpdated = statement.executeUpdate();
+            if (rowsUpdated < 0) {
+                System.out.println("Your ad was successfully updated!");
+            }
+        }catch (SQLException throwables){
+            throwables.printStackTrace();
+        }
+        return null;
+    }
     @Override
     public Ad individualAd(Long id) {
         String singleAd = "SELECT * FROM ads WHERE user_id = ? ";

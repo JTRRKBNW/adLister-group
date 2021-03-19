@@ -13,7 +13,7 @@ public interface Ads {
      Ad individualAd(Long id);
 
 
-
+     List<Ad> updateAd(long id,String title,String description);
 
     List<Ad> getAdsByUser(long id);
 

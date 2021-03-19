@@ -22,10 +22,19 @@
             <div class="col-md-6 row">
                 <h6 class="card-subtitle mb-2 text-muted"><c:out value="${userad.title}"/></h6>
                 <p class="card-text"><c:out value="${userad.description}"/></p>
-<%--                <form action="/profile" method="post">--%>
-<%--                    <label>--%>
-<%--                    <input  class="form-control" id="adId" type="text" v>--%>
-<%--                </label>--%>
+                <form action="/updateAdServlet" method="post">
+                    <div class="form-group">
+                        <br>
+                        <label for="Id">Update Ad</label>
+                        <input id="Id" name="Id" class="form-control" hidden type="text"  value="${userad.id}">
+                        <label for="title">update title</label>
+                        <input id="title" name="title" class="form-control"  type="text"  value="${userad.title}">
+                        <label for="descript">update description</label>
+                        <input id="descript" name="descript" class="form-control"  type="text"  value="${userad.description}">
+                    </div>
+
+                    <input type="submit" class="btn btn-block btn-primary">
+                </form>
             </div>
             <br>
               <form action="/profile" method="post">
