@@ -12,6 +12,8 @@
     <jsp:include page="/WEB-INF/partials/head.jsp">
         <jsp:param name="title" value="Detailed View of Ad #${id}" />
     </jsp:include>
+    <jsp:include page="/WEB-INF/partials/navbar.jsp" />
+    <jsp:include page="/WEB-INF/partials/bootstrap.jsp" />
 </head>
 <body>
 <jsp:include page="/WEB-INF/partials/navbar.jsp" />

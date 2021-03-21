@@ -23,7 +23,5 @@ public class ProfileEditorServlet extends HttpServlet {
         String updatedPassword = request.getParameter("updatedPassword");
         User user = (User) request.getSession().getAttribute("user");
         long userId = Long.parseLong(request.getParameter("userId"));
-
-
     }
 }
