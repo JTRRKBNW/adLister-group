@@ -52,7 +52,7 @@ public List<Ad> deleteAd(long id){return null;};
         return null;
     }
     @Override
-    public void updateProfile(User user) {
+    public void updateProfile(String username, String password, String email, long id) {
     }
 
     private List<Ad> generateAds() {

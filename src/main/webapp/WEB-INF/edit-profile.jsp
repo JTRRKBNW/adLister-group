@@ -20,12 +20,12 @@
             <input id="email" name="email" class="form-control" type="text">
         </div>
         <div class="form-group">
-            <label for="current_password">Current Password</label>
-            <input id="current_password" name="password" class="form-control" type="password">
+            <label for="currentPassword">Current Password</label>
+            <input id="currentPassword" name="password" class="form-control" type="password">
         </div>
         <div class="form-group">
-            <label for="new_password">New Password</label>
-            <input id="new_password" name="confirm_password" class="form-control" type="password">
+            <label for="updatedPassword">New Password</label>
+            <input id="updatedPassword" name="confirm_password" class="form-control" type="password">
         </div>
         <div class="form-group">
             <label for="confirm_password">Confirm New Password</label>

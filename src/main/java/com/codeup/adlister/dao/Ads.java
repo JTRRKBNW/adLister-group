@@ -14,7 +14,7 @@ public interface Ads {
      Ad individualAd(Long id);
      // update user profile
 
-    void updateProfile(User user);
+    void updateProfile(String username, String password, String email, long id);
 
     List<Ad> updateAd(long id,String title,String description);
 

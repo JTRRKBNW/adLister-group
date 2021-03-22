@@ -18,7 +18,7 @@ public class MySQLAdsDao implements Ads {
         try {
             DriverManager.registerDriver(new Driver());
             connection = DriverManager.getConnection(
-                config.getUrl(),
+                    config.getUrl(),
                 config.getUser(),
                 config.getPassword()
             );
@@ -111,7 +111,7 @@ public class MySQLAdsDao implements Ads {
     }
 
     @Override
-    public void updateProfile(User user) {
+    public void updateProfile(String username, String password, String email, long id) {
 
     }
 
