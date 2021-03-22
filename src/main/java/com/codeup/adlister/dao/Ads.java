@@ -23,4 +23,6 @@ public interface Ads {
     List<Ad> search(String term);
 
     List<Ad> deleteAd(long id);
+
+    Ad byAdID(long id);
 }
