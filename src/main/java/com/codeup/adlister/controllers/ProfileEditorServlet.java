@@ -24,10 +24,10 @@ public class ProfileEditorServlet extends HttpServlet {
         String updatedPassword = request.getParameter("updatedPassword");
         User user = (User) request.getSession().getAttribute("user");
         long userId = user.getId();
-
+        System.out.println(username + email + updatedPassword + userId);
 //        boolean validAttempt = Password.check(currentPassword, user.getPassword());
         DaoFactory.getUsersDao().updateProfile(username, email, updatedPassword, userId);
-        response.sendRedirect("/edit-profile");
+        response.sendRedirect("/profile");
     }
 }
 
